@@ -32,8 +32,12 @@ function Cadastro() {
                             <input type="text" name="cidade" id="cidade"/>
                         </label>
                     </div>
+
+                    <input type="submit" value="Salvar" />
                 </fieldset>
             </form>
+
+            <BotaoVoltar></BotaoVoltar>
         </div>
     )
 }
