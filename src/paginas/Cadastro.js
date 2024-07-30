@@ -1,7 +1,8 @@
 import Header from '../Header'
 import '../App.css';
 import BotaoVoltar from '../componentes/BotaoVoltar';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function Cadastro() {
 
@@ -11,6 +12,8 @@ function Cadastro() {
         cidade: '',
     });
 
+    const [mensagem, setMensagem] = useState('');
+
     function handleInputChange(event) {
         campos[event.target.name] = event.target.value;
         setCampos(campos);
@@ -19,6 +22,15 @@ function Cadastro() {
     function handleFormSubmit(event){
         event.preventDefault();
         console.log(campos);
+        axios.post('http://localhost:3001/api/usuarios', campos).then(response => {
+            setMensagem('Formulário enviado com sucesso!');
+        })
+
+        setMensagem('Formulário enviado com sucesso!');
+
+        setTimeout(() => {
+            setMensagem('');
+        }, 3000);
     }
 
     return (
@@ -40,7 +52,7 @@ function Cadastro() {
                     </div>
 
                     <div>
-                        <label>Nome:
+                        <label>Idade:
                             <input type="number" name="idade" id="idade"/>
                         </label>
                     </div>

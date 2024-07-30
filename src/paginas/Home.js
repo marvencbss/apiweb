@@ -9,7 +9,7 @@ function Home() {
     <div className="App">
       {/*importar header*/}
 
-      <Header title="Parametro de titulo"/>
+      <Header title="Sitezao"/>
 
       <header className="App-header">
 
