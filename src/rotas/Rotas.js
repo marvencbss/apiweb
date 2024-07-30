@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom'; 
 import Home from '../paginas/Home';
 import Cadastro from '../paginas/Cadastro';
-import ListaRegistros from '../paginas/ListaRegistros';
  
 function Rotas() {
     return (
