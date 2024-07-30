@@ -1,9 +1,9 @@
 import './App.css';
-import Home from './paginas/Home';
+import Rotas from './rotas/Rotas';
 
 function App() {
   return(
-    <Home/>
+    <Rotas/>
   );
 }
 
