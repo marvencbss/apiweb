@@ -1,8 +1,8 @@
-function Header() {
+function Header(param) {
     return (
-        <Header>
-            <h1>Componente Header</h1>
-        </Header>
+        <header>
+            <h1>{param.title}</h1>
+        </header>
     );
 }
 

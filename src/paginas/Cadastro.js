@@ -1,8 +1,26 @@
-import Header from "../Header";
+import Header from '../Header'
 import '../App.css';
 import BotaoVoltar from '../componentes/BotaoVoltar';
+import { useState } from 'react';
 
 function Cadastro() {
+
+    const [campos, setCampos] = useState({
+        nome: '',
+        idade: 0,
+        cidade: '',
+    });
+
+    function handleInputChange(event) {
+        campos[event.target.name] = event.target.value;
+        setCampos(campos);
+    }
+
+    function handleFormSubmit(event){
+        event.preventDefault();
+        console.log(campos);
+    }
+
     return (
         <div className="App">
             <Header title="Formulario de cadastro" />
