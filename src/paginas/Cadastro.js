@@ -23,7 +23,7 @@ function Cadastro() {
         event.preventDefault();
         console.log(campos);
         axios.post('http://localhost:3001/api/usuarios', campos).then(response => {
-            setMensagem('Formulário enviado com sucesso!');
+            setMensagem('Formulário enviado com sucesso!')
         })
 
         setMensagem('Formulário enviado com sucesso!');
@@ -70,6 +70,6 @@ function Cadastro() {
             <BotaoVoltar></BotaoVoltar>
         </div>
     )
-}
+};
 
 export default Cadastro;
