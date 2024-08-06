@@ -1,12 +1,13 @@
 import Header from '../Header';
 import '../App.css';
 import BotaoVoltar from '../componentes/BotaoVoltar';
-import React, { useState, useEffect } from 'react';
 
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Cadastro() {
 
+    //cria novo estado para os campos da tela
     const [campos, setCampos] = useState({
         nome: '',
         idade: 0,
@@ -15,8 +16,8 @@ function Cadastro() {
         cep: '',
         complemento: '',
         bairro: '',
-        numero:0,
-        logradouro: ''
+        localidade: '',
+        numero:0
     });
 
     const [estados, setEstados] = useState([]);
@@ -43,6 +44,7 @@ function Cadastro() {
             ...prevErros,
             [name]: ''
         }));
+
     }
 
     function validarCampos() {
@@ -70,14 +72,6 @@ function Cadastro() {
 
         if (!campos.bairro) {
             novosErros.bairro = 'Bairro é obrigatório';
-        }
-
-        if (!campos.numero) {
-            novosErros.numero = 'Número é obrigatório';
-        }
-
-        if (!campos.logradouro) {
-            novosErros.logradouro = 'Logradouro é obrigatório';
         }
 
         if (!campos.cep) {
@@ -116,8 +110,8 @@ function Cadastro() {
                     cep: '',
                     complemento: '',
                     bairro: '',
-                    numero: 0,
-                    logradouro: ''
+                    localidade: '',
+                    numero:0
                 });
 
                 // Limpar mensagem após 3 segundos
@@ -144,8 +138,7 @@ function Cadastro() {
                             cidade: response.data.localidade,
                             complemento: response.data.complemento,
                             uf: response.data.uf,
-                            bairro: response.data.bairro,
-                            logradouro: response.data.logradouro
+                            bairro: response.data.bairro
                     
                         }));
                     }
@@ -168,51 +161,50 @@ function Cadastro() {
                         </legend>
 
                         <div className="inline-fields">
-                            <div className="field-maior">
-                                <label>Nome:
-                                    <input type="text" name="nome" id="nome" value={campos.nome} onChange={handleInputChange} />
-                                    {erros.nome && <p className="error">{erros.nome}</p>}
-                                </label>
-                            </div>
+                        <div className="field-maior">
+                            <label>Nome:
+                                <input type="text" name="nome" id="nome" value={campos.nome} onChange={handleInputChange} />
+                                {erros.nome && <p className="error">{erros.nome}</p>}
+                            </label>
+                        </div>
 
-                            <div className="field-menor">
-                                <label>Idade:
-                                    <input type="number" name="idade" id="idade" value={campos.idade} onChange={handleInputChange} />
-                                    {erros.idade && <p className="error">{erros.idade}</p>}
-                                </label>
-                            </div>
+                        <div className="field-menor">
+                            <label>Idade:
+                                <input type="number" name="idade" id="idade" value={campos.idade} onChange={handleInputChange} />
+                                {erros.idade && <p className="error">{erros.idade}</p>}
+                            </label>
+                        </div>
+                        </div>
+                        <div className="inline-fields">
+                        <div className="field-menor">
+                            <label>CEP:
+                                <input type="text" name="cep" id="cep" value={campos.cep} onChange={handleInputChange} onBlur={buscarEnderecoPorCEP} />
+                            </label>
+                        </div>
+
+
+                        <div className="field-maior">
+                            <label>Cidade:
+                                <input type="text" name="cidade" id="cidade" value={campos.cidade} onChange={handleInputChange} />
+                                {erros.cidade && <p className="error">{erros.cidade}</p>}
+                            </label>
+                        </div>
                         </div>
 
                         <div className="inline-fields">
-                            <div className="field-menor">
-                                <label>CEP:
-                                    <input type="text" name="cep" id="cep" value={campos.cep} onChange={handleInputChange} onBlur={buscarEnderecoPorCEP} />
-                                    {erros.cep && <p className="error">{erros.cep}</p>}
-                                </label>
-                            </div>
-
-                            <div className="field-maior">
-                                <label>Cidade:
-                                    <input type="text" name="cidade" id="cidade" value={campos.cidade} onChange={handleInputChange} />
-                                    {erros.cidade && <p className="error">{erros.cidade}</p>}
-                                </label>
-                            </div>
+                        <div className="field-maior">
+                            <label>Bairro:
+                                <input type="text" name="bairro" id="cidabairrode" value={campos.bairro} onChange={handleInputChange} />
+                                {erros.bairro && <p className="error">{erros.bairro}</p>}
+                            </label>
                         </div>
 
-                        <div className="inline-fields">
-                            <div className="field-maior">
-                                <label>Bairro:
-                                    <input type="text" name="bairro" id="cidabairrode" value={campos.bairro} onChange={handleInputChange} />
-                                    {erros.bairro && <p className="error">{erros.bairro}</p>}
-                                </label>
-                            </div>
-
-                            <div className="field-menor">
-                                <label>Complemento:
-                                    <input type="text" name="complemento" id="complemento" value={campos.complemento} onChange={handleInputChange} />
-                                    {erros.complemento && <p className="error">{erros.complemento}</p>}
-                                </label>
-                            </div>
+                        <div className="field-menor">
+                            <label>Complemento:
+                                <input type="text" name="complemento" id="complemento" value={campos.complemento} onChange={handleInputChange} />
+                                {erros.complemento && <p className="error">{erros.complemento}</p>}
+                            </label>
+                        </div>
                         </div>
 
                         <div className="inline-fields">
@@ -252,6 +244,8 @@ function Cadastro() {
                 {mensagem && <p>{mensagem}</p>}
                 <BotaoVoltar></BotaoVoltar>
             </div>
+
+
         </div>
     )
 }

@@ -9,23 +9,23 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 1s linear;
+    animation: App-logo-spin infinite 0.8s linear;
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #f7f8fa;
+  min-height: 83vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(8, 8, 8);
 }
 
 .App-footer {
-  color: black;
+  color: hwb(0 2% 98%);
 }
 
 .App-link {
@@ -115,7 +115,7 @@
 }
 
 .lista-registros {
-  max-width: 800px;
+  flex: auto;
   margin: 0 auto;
   padding: 20px;
 }
@@ -147,6 +147,115 @@
 
 .lista-registros tr:hover {
   background-color: #ddd;
+}
+
+.editar-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.editar-link:hover {
+  text-decoration: underline;
+}
+
+.editar-link svg {
+  margin-right: 5px; /* Espaço entre o ícone e o texto */
+}
+
+.action-column {
+  width: 10px; /* Ajuste para a largura desejada */
+  white-space: nowrap; /* Evita que o conteúdo quebre em múltiplas linhas */
+}
+
+.espaco_coluna{
+  margin: 0 20px;
+}
+
+.inline-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inline-fields .field-menor {
+  flex: 1;
+  margin-right: 10px;
+  max-width: 150px; /* Ajuste a largura conforme necessário */
+}
+
+.inline-fields .field-maior {
+  flex: 2; /* O maior ocupará mais espaço */
+  margin-right: 10px;
+}
+
+.inline-fields .field-menor input,
+.inline-fields .field-maior input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 35%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.form-container input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.preview-image {
+  margin-top: 15px;
+  max-width: 50%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.upload-progress {
+  margin-top: 20px;
+}
+
+.upload-progress progress {
+  width: 50%;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.upload-progress span {
+  display: block;
+  margin-top: 5px;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
