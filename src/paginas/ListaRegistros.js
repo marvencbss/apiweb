@@ -73,7 +73,7 @@ function ListaRegistros() {
 
   return (
     <div className="lista-registros">
-      <h2>Lista de Registros</h2>
+      <h2>Lista de Cadastros</h2>
       <table>
         <thead>
           <tr>

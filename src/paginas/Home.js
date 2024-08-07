@@ -9,17 +9,18 @@ function Home() {
   return (
     <div className="App">
       {/* Importamos o componente Header criado como HTML */}
-      <Header title="Site monstro" />
+      <Header title="Programa 3 Mil Talentos" />
 
       <header className="App-header">
 
-        <img src={logo} className="App-logo" alt="logo" />
+      <img src={logo} className="App-logo" alt="logo" />
 
         <p>Praticas avançadas em Desenvolvimento Web.</p>
 
         <Link to="/cadastro">Acessar cadastro</Link>
-        <Link to="/ListaRegistros">Listagem de cadastro</Link>
-        
+        <Link to="/ListaRegistros">Lista de cadastros</Link>
+        <Link to="/upload">Arquivos</Link>
+
       </header>
 
        {/* Importamos o componente Footer  criado como HTML */}
