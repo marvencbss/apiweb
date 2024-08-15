@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axios/configuracaoAxios';
 import BotaoVoltar from '../componentes/BotaoVoltar';
 import { Link } from 'react-router-dom';
-
 import Modal from '../componentes/Modal';
-
-
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import '../App.css';
-import { FaEdit,FaTrash  } from 'react-icons/fa'; 
-
 
 function ListaRegistros() {
   const [registros, setRegistros] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
   const [showModal, setShowModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-
   const [mensagem, setMensagem] = useState('');
+  const [buscarPorNome, setBurcarPorNome] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api_super/usuarios')
+    axiosInstance.get('http://localhost:3001/api_super/usuarios')
       .then(response => {
         setRegistros(response.data);
         setLoading(false);
@@ -32,15 +27,13 @@ function ListaRegistros() {
       });
   }, []);
 
-
   const handleDelete = (id) => {
     setSelectedId(id);
     setShowModal(true);
   };
 
-
   const confirmDelete = () => {
-    axios.delete(`http://localhost:3001/api_super/usuarios/${selectedId}`)
+    axiosInstance.delete(`http://localhost:3001/api_super/usuarios/${selectedId}`)
       .then(response => {
         setRegistros(registros.filter(registro => registro.id !== selectedId));
         setMensagem('Registro deletado com sucesso!');
@@ -51,17 +44,19 @@ function ListaRegistros() {
         setShowModal(false);
       });
 
-        setTimeout(() => {
-          setMensagem('');
-      }, 3000);
-
+    setTimeout(() => {
+      setMensagem('');
+    }, 3000);
   };
-
 
   const closeModal = () => {
     setShowModal(false);
     setSelectedId(null);
   };
+
+  const filteredRegistros = registros.filter(registro =>
+    registro.nome.toLowerCase().includes(buscarPorNome.toLowerCase())
+  );
 
   if (loading) {
     return <p>Carregando...</p>;
@@ -73,7 +68,16 @@ function ListaRegistros() {
 
   return (
     <div className="lista-registros">
-      <h2>Lista de Cadastros</h2>
+      <h2>Lista de Registros</h2>
+      <div>
+      <input
+        type="text"
+        placeholder="Buscar por nome..."
+        value={buscarPorNome}
+        onChange={(e) => setBurcarPorNome(e.target.value)}
+        style={{ width: '20%' }} />
+      </div>
+      <br></br>
       <table>
         <thead>
           <tr>
@@ -81,16 +85,16 @@ function ListaRegistros() {
             <th>Idade</th>
             <th>Cidade</th>
             <th>UF</th>
-            <th>cep</th>
-            <th>complemento</th>
-            <th>bairro</th>
+            <th>Cep</th>
+            <th>Complemento</th>
+            <th>Bairro</th>
             <th>logradouro</th>
-            <th>número</th>
+            <th>Número</th>
             <th>Editar</th>
           </tr>
         </thead>
         <tbody>
-          {registros.map(registro => (
+          {filteredRegistros.map(registro => (
             <tr key={registro.id}>
               <td>{registro.nome}</td>
               <td>{registro.idade}</td>
@@ -103,13 +107,11 @@ function ListaRegistros() {
               <td>{registro.numero}</td>
               <td class="action-column">
                 <Link to={`/editar/${registro.id}`} className="espaco_coluna">
-                   <FaEdit/> Editar  {/* Ícone de edição */}
+                   <FaEdit/> Editar
                 </Link>
-                
-                <Link onClick={() => handleDelete(registro.id)} >
-                  <FaTrash /> Deletar {/* Ícone de delete */}
+                <Link onClick={() => handleDelete(registro.id)}>
+                  <FaTrash /> Deletar
                 </Link>
-
               </td>
             </tr>
           ))}

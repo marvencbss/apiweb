@@ -107,7 +107,6 @@ function Cadastro() {
                 setMensagem('Formulário enviado com sucesso!');
                 console.log(response.data);
 
-                // Limpar os campos do formulário após o envio
                 setCampos({
                     nome: '',
                     idade: 0,
@@ -120,7 +119,6 @@ function Cadastro() {
                     logradouro: ''
                 });
 
-                // Limpar mensagem após 3 segundos
                 setTimeout(() => {
                     setMensagem('');
                 }, 3000);

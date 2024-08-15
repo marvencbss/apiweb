@@ -2,7 +2,7 @@ import './App.css';
 import Rotas from './rotas/Rotas';
 
 function App() {
-  return(
+  return (
     <Rotas/>
   );
 }

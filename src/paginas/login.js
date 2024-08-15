@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+
 import {Link} from 'react-router-dom';
 
 import '../CSS/login.css';
@@ -19,7 +20,7 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:3001/api_super/login', { email, senha });
             setAuthToken(response.data.token);
-            //localStorage.setItem('token', response.data.token);
+            // localStorage.setItem('token', response.data.token);
             setToken(response.data.token);
             navigate('/');
         } catch (error) {
@@ -61,4 +62,5 @@ const Login = () => {
         </div>
     );
 };
+
 export default Login;

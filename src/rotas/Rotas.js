@@ -10,7 +10,6 @@ import { AuthProvider } from '../autenticacao/autenticacao';
 import PrivateRoute from '../autenticacao/rotasPrivadas';
 import EsqueciMinhaSenha from '../paginas/esqueciMinhaSenha';
 import ResetarSenha from '../paginas/ResetarSenha';
-
 import HomeMaterials from '../paginas/HomeMaterials';
  
 function Rotas() {
@@ -23,7 +22,6 @@ function Rotas() {
                 <Route path="/esqueci-minha-senha" element={<EsqueciMinhaSenha />} />
                 <Route path="/resetar-senha/:token" element={<ResetarSenha />} />
                 <Route path="/homematerials" element={<HomeMaterials />} />
-
                 <Route path="/" element={<PrivateRoute />}>
                     <Route path="/" element={<Home />} />
                 </Route>   
