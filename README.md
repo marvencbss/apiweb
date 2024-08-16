@@ -1,4 +1,4 @@
-# Aplicação Back end 
+# Aplicação Front end 
 Interface interativa interativa com:
 - Cadastro e login de usuários
 - Listagem de Cadastros
