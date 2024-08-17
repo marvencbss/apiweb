@@ -2,7 +2,7 @@ import '../App.css';
 import Header from '../Header';
 import Footer from '../Footer';
 import {Link} from 'react-router-dom';
-
+import logo from '../logo.svg';
 
 function Home() {
   return (
@@ -12,6 +12,7 @@ function Home() {
 
       <header className="App-header">
 
+      <img src={logo} className="App-logo" alt="logo" />
         <p>Praticas avançadas em Desenvolvimento Web.</p>
 
         <Link to="/cadastro">Acessar cadastro</Link>

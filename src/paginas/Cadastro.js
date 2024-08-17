@@ -4,7 +4,6 @@ import BotaoVoltar from '../componentes/BotaoVoltar';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import axiosInstance from '../axios/configuracaoAxios';
-import FullWidthTabs from './HomeMaterials'; 
 
 function Cadastro() {
 
@@ -198,24 +197,6 @@ function Cadastro() {
 
                         <div className="inline-fields">
                             <div className="field-maior">
-                                <label>Nome:
-                                    <input type="text" name="nome" id="nome" value={campos.nome} onChange={handleInputChange} />
-                                    {erros.nome && <p className="error">{erros.nome}</p>}
-                                </label>
-                            </div>
-
-                            <div className="field-menor">
-                                <label>Idade:
-                                    <input type="number" name="idade" id="idade" value={campos.idade} onChange={handleInputChange} />
-                                    {erros.idade && <p className="error">{erros.idade}</p>}
-                                </label>
-                            </div>
-                        </div>
-
-
-
-                        <div className="inline-fields">
-                            <div className="field-maior">
                                 <label>E-mail:
                                     <input type="text" name="email" id="email" value={campos.email} onChange={handleInputChange} />
                                     {erros.email && <p className="error">{erros.email}</p>}
@@ -237,6 +218,25 @@ function Cadastro() {
                             </div>
                         </div>
 
+                        <legend>
+                            <h4><u>Dados pessoais</u></h4>
+                        </legend>
+
+                        <div className="inline-fields">
+                            <div className="field-maior">
+                                <label>Nome:
+                                    <input type="text" name="nome" id="nome" value={campos.nome} onChange={handleInputChange} />
+                                    {erros.nome && <p className="error">{erros.nome}</p>}
+                                </label>
+                            </div>
+
+                            <div className="field-menor">
+                                <label>Idade:
+                                    <input type="number" name="idade" id="idade" value={campos.idade} onChange={handleInputChange} />
+                                    {erros.idade && <p className="error">{erros.idade}</p>}
+                                </label>
+                            </div>
+                        </div>
 
                         <div className="inline-fields">
                             <div className="field-menor">
